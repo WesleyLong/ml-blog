@@ -21,4 +21,20 @@ public class UserVo implements Serializable{
     @NotEmpty(message = "新密码不能为空")
     @Length(min=6, message = "新密码最小长度为6")
     private String newpwd;
+
+    public String getOldpwd() {
+        return oldpwd;
+    }
+
+    public void setOldpwd(String oldpwd) {
+        this.oldpwd = oldpwd;
+    }
+
+    public String getNewpwd() {
+        return newpwd;
+    }
+
+    public void setNewpwd(String newpwd) {
+        this.newpwd = newpwd;
+    }
 }

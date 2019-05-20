@@ -52,7 +52,7 @@ public class LogAspect {
             logObj.setDescr(syslog.value());
             logObj.setOperator("admin");
             logObj.setCreateTime(date);
-            log.info("保存日志:{}",logObj);
+//            log.info("保存日志:{}",logObj);
             this.logService.save(logObj);
         }
     }

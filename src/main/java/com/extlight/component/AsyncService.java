@@ -37,11 +37,11 @@ public class AsyncService {
             String requestUrl = BAIDU_PUSH_URL.replace("HOME_PAGE", homePage).replace("TOKEN", bd_push_token);
             String result = HttpClientUtil.sendPost(requestUrl, homePage + "/" + url);
 
-            log.info("=====baidu push result:{}=====",result);
+//            log.info("=====baidu push result:{}=====",result);
             return;
         }
 
-        log.info("=====baidu_push_token 为空=====");
+//        log.info("=====baidu_push_token 为空=====");
 
     }
 

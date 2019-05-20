@@ -45,6 +45,6 @@ public class MailService {
         helper.setText(emailtext, true);
         this.javaMailSender.send(message);
 
-        log.info("发送邮件内容:{}",content);
+//        log.info("发送邮件内容:{}",content);
     }
 }

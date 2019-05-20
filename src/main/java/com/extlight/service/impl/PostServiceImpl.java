@@ -2,7 +2,6 @@ package com.extlight.service.impl;
 
 import com.extlight.common.utils.CacheUtil;
 import com.extlight.common.utils.DateUtil;
-import com.extlight.common.vo.PostVo;
 import com.extlight.component.AsyncService;
 import com.extlight.component.LuceneService;
 import com.extlight.mapper.BaseMapper;
@@ -57,7 +56,7 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
             throw new GlobalException(400, "该分类不存在");
         }
 
-        if(StringUtils.isEmpty(post.getImgUrl())) {
+        if (StringUtils.isEmpty(post.getImgUrl())) {
             post.setImgUrl("material-" + (new Random().nextInt(30) + 1) + ".jpg");
         }
 
@@ -65,12 +64,12 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
         String dateStr = DateUtil.formateToStr(now, "yyyy-MM-dd");
         String[] dates = dateStr.split("-");
 
-        post.setPublishDate(now)
-                .setYear(dates[0])
-                .setMonth(dates[1])
-                .setDay(dates[2])
-                .setCategoryName(category.getName())
-                .setPostUrl(post.getYear() + "/" + post.getMonth() + "/" + post.getDay() + "/" + post.getTitle().replace(" ", "-") + "/");
+        post.setPublishDate(now);
+        post.setYear(dates[0]);
+        post.setMonth(dates[1]);
+        post.setDay(dates[2]);
+        post.setCategoryName(category.getName());
+        post.setPostUrl(post.getYear() + "/" + post.getMonth() + "/" + post.getDay() + "/" + post.getTitle().replace(" ", "-") + "/");
 
         this.postMapper.insert(post);
 
@@ -93,9 +92,9 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
         Post dbPost = this.postMapper.selectByPrimaryKey(post.getId());
 
         // 修改名字同时必须修改 postUrl
-        post.setPostUrl(dbPost.getYear() + "/" + dbPost.getMonth() + "/" + dbPost.getDay() + "/" + post.getTitle().replace(" ", "-") + "/")
-                .setCategoryName(category.getName())
-                .setPublishDate(dbPost.getPublishDate());
+        post.setPostUrl(dbPost.getYear() + "/" + dbPost.getMonth() + "/" + dbPost.getDay() + "/" + post.getTitle().replace(" ", "-") + "/");
+        post.setCategoryName(category.getName());
+        post.setPublishDate(dbPost.getPublishDate());
 
         this.postMapper.updateByPrimaryKeySelective(post);
 
@@ -266,8 +265,8 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
                 }
 
                 post = new Post();
-                post.setTitle(titleStr.substring(titleStr.indexOf(":") + 1).trim())
-                        .setContent(sb.toString());
+                post.setTitle(titleStr.substring(titleStr.indexOf(":") + 1).trim());
+                post.setContent(sb.toString());
 
                 String categoryName = categoryNameStr.substring(categoryNameStr.indexOf(":") + 1).trim();
                 if (StringUtils.isEmpty(categoryName)) {
@@ -279,8 +278,8 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
                     Category category = this.categoryService.getCategoryByName(post.getCategoryName());
                     if (category == null) {
                         category = new Category();
-                        category.setName(post.getCategoryName())
-                                .setDescr(post.getCategoryName());
+                        category.setName(post.getCategoryName());
+                        category.setDescr(post.getCategoryName());
                         this.categoryService.save(category);
                     }
                     post.setCategoryId(category.getId());
@@ -290,21 +289,21 @@ public class PostServiceImpl extends BaseServiceImpl<Post> implements PostServic
                 if (!StringUtils.isEmpty(tags)) {
                     tags = tags.replace("[", "").replace("]", "");
                 }
-                post.setStatus(1)
-                        .setImgUrl("material-" + (new Random().nextInt(30) + 1) + ".jpg")
-                        .setTags(tags);
+                post.setStatus(1);
+                post.setImgUrl("material-" + (new Random().nextInt(30) + 1) + ".jpg");
+                post.setTags(tags);
 
                 Date date = DateUtil.parseToDate(createTimeStr.substring(createTimeStr.indexOf(":") + 1).trim(), "yyyy-MM-dd HH:mm:ss");
-                post.setPublishDate(date)
-                        .setCreateTime(date)
-                        .setUpdateTime(date);
+                post.setPublishDate(date);
+                post.setCreateTime(date);
+                post.setUpdateTime(date);
 
                 String dateStr = DateUtil.formateToStr(date, "yyyy-MM-dd");
                 String[] dates = dateStr.split("-");
-                post.setYear(dates[0])
-                        .setMonth(dates[1])
-                        .setDay(dates[2])
-                        .setPostUrl(post.getYear() + "/" + post.getMonth() + "/" + post.getDay() + "/" + post.getTitle().replace(" ", "-") + "/");
+                post.setYear(dates[0]);
+                post.setMonth(dates[1]);
+                post.setDay(dates[2]);
+                post.setPostUrl(post.getYear() + "/" + post.getMonth() + "/" + post.getDay() + "/" + post.getTitle().replace(" ", "-") + "/");
 
                 postList.add(post);
             } catch (Exception e) {

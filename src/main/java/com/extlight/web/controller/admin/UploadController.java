@@ -60,7 +60,7 @@ public class UploadController {
 
             Response resp = this.fileService.upload(attach.getInputStream(), attach.getOriginalFilename());
             if (!resp.isOK()) {
-                log.error("文件上传失败 -> url:{},Response:{}","/mdUploadfile",resp);
+//                log.error("文件上传失败 -> url:{},Response:{}","/mdUploadfile",resp);
                 throw new GlobalException(500,"文件上传失败");
             }
             //解析上传成功的结果
@@ -94,7 +94,7 @@ public class UploadController {
 
             Response response = this.fileService.upload(file.getInputStream(), file.getOriginalFilename());
             if (!response.isOK()) {
-                log.error("文件上传失败 -> url:{},Response:{}","/uploadfile",response);
+//                log.error("文件上传失败 -> url:{},Response:{}","/uploadfile",response);
                 throw new GlobalException(500,"文件上传失败");
             }
             //解析上传成功的结果

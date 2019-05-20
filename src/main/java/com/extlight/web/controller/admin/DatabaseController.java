@@ -60,7 +60,7 @@ public class DatabaseController {
         }
 
         if (StringUtils.isEmpty(sqlStr)) {
-            log.info("导出 SQL 文件失败【sql 内容为空】");
+//            log.info("导出 SQL 文件失败【sql 内容为空】");
             return;
         }
 

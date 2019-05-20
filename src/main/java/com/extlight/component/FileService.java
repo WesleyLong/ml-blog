@@ -50,7 +50,7 @@ public class FileService {
             return response;
         } catch (QiniuException ex) {
             Response r = ex.response;
-            log.error("文件上传异常:",r.toString());
+//            log.error("文件上传异常:",r.toString());
             throw new GlobalException(500, ex.toString());
         }
     }
@@ -79,7 +79,7 @@ public class FileService {
             }
             return response;
         } catch (QiniuException ex) {
-            log.error("文件删除异常:",ex.toString());
+//            log.error("文件删除异常:",ex.toString());
             throw new GlobalException(500, ex.toString());
         }
     }

@@ -169,11 +169,11 @@ public class LuceneService {
                 if (Integer.parseInt(document.get("status")) == 1) {
                     post = new Post();
                     String titleHighLight  = highlighter.getBestFragment(analyzer,"title",document.get("title"));
-                    post.setId(Integer.parseInt(document.get("postId")))
-                            .setTitle(titleHighLight)
-                            .setPostUrl(document.get("postUrl"))
-                            .setCategoryName(document.get("categoryName"))
-                            .setPublishDate(DateUtil.parseToDate(document.get("publishDate"), "yyyy-MM-dd"));
+                    post.setId(Integer.parseInt(document.get("postId")));
+                    post.setTitle(titleHighLight);
+                    post.setPostUrl(document.get("postUrl"));
+                    post.setCategoryName(document.get("categoryName"));
+                    post.setPublishDate(DateUtil.parseToDate(document.get("publishDate"), "yyyy-MM-dd"));
                     list.add(post);
                 }
             }
@@ -222,11 +222,11 @@ public class LuceneService {
                 if (Integer.parseInt(document.get("status")) == 1) {
                     post = new Post();
                     String titleHighLight  = highlighter.getBestFragment(analyzer,"title",document.get("title"));
-                    post.setId(Integer.parseInt(document.get("postId")))
-                            .setTitle(titleHighLight)
-                            .setPostUrl(document.get("postUrl"))
-                            .setCategoryName(document.get("categoryName"))
-                            .setPublishDate(DateUtil.parseToDate(document.get("publishDate"), "yyyy-MM-dd"));
+                    post.setId(Integer.parseInt(document.get("postId")));
+                    post.setTitle(titleHighLight);
+                    post.setPostUrl(document.get("postUrl"));
+                    post.setCategoryName(document.get("categoryName"));
+                    post.setPublishDate(DateUtil.parseToDate(document.get("publishDate"), "yyyy-MM-dd"));
                     list.add(post);
                 }
             }

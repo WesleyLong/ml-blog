@@ -48,7 +48,7 @@ public class GeetestService {
 
             return gtSdk.getResponseStr();
         } catch (Exception e) {
-            log.error("获取验证码异常:",e.toString());
+//            log.error("获取验证码异常:",e.toString());
             throw new GlobalException(500,e.toString());
         }
     }
@@ -90,7 +90,7 @@ public class GeetestService {
 
             return gtResult == 1;
         } catch (Exception e) {
-            log.error("检测验证码异常:",e.toString());
+//            log.error("检测验证码异常:",e.toString());
             throw new GlobalException(500,e.toString());
         }
     }

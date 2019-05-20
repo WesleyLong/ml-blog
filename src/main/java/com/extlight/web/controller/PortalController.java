@@ -215,19 +215,19 @@ public class PortalController {
      */
     @GetMapping("/guestbook/")
     public String guestbook(Model model) throws Exception {
-        List<Guestbook> list = this.guestbookService.getListPyPage(0,1, PageConstant.PAGE_NUM, PageConstant.PAGE_SIZE);
+        List<Guestbook> list = this.guestbookService.getListPyPage(0, 1, PageConstant.PAGE_NUM, PageConstant.PAGE_SIZE);
         Integer totalCount = this.guestbookService.getTotalCount(0);
         model.addAttribute("pageInfo", new PageInfo<>(list, 10));
-        model.addAttribute("totalCount",totalCount);
+        model.addAttribute("totalCount", totalCount);
         return render(model, "portal/guestbook");
     }
 
     @GetMapping("/guestbook/page/{pageNum}/")
     public String guestbook(@PathVariable Integer pageNum, Model model) throws Exception {
-        List<Guestbook> list = this.guestbookService.getListPyPage(0,1, pageNum, PageConstant.PAGE_SIZE);
+        List<Guestbook> list = this.guestbookService.getListPyPage(0, 1, pageNum, PageConstant.PAGE_SIZE);
         Integer totalCount = this.guestbookService.getTotalCount(0);
         model.addAttribute("pageInfo", new PageInfo<>(list, 10));
-        model.addAttribute("totalCount",totalCount);
+        model.addAttribute("totalCount", totalCount);
         return render(model, "portal/guestbook");
     }
 
@@ -354,10 +354,10 @@ public class PortalController {
         PostVo postVo;
         for (Post post : subList) {
             postVo = new PostVo();
-            postVo.setId(post.getId())
-                    .setTitle(post.getTitle())
-                    .setPublishDate(post.getPublishDate())
-                    .setPostUrl(post.getPostUrl());
+            postVo.setId(post.getId());
+            postVo.setTitle(post.getTitle());
+            postVo.setPublishDate(post.getPublishDate());
+            postVo.setPostUrl(post.getPostUrl());
 
             String key = post.getYear() + "-" + post.getMonth();
 
